@@ -1,7 +1,7 @@
 import WidgetButton from "./WidgetButton";
 import { styled } from "styled-components";
 import { NumericFormat } from "react-number-format";
-import ethereum from "../../image/Ethereum-blue.svg";
+import ethereum from "../../assets/image/Ethereum-blue.svg";
 const Container = styled.div`
   width: 164px;
   height: 167px;

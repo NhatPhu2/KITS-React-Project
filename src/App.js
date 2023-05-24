@@ -1,11 +1,19 @@
-import Widget from "./component/widget/Widget";
-import { FollowButton } from "component/topcreator/FollowButton";
+import Widget from "./component/Widget/Widget";
+import { FollowButton } from "component/TopCreator/FollowButton";
 import "./App.css";
-import TopCreator from "component/topcreator/TopCreator";
+import TopCreator from "component/TopCreator/TopCreator";
+import ButtonSideBar from "component/Sidebar/ButtonSideBar";
+import icon from "./assets/image/Icon.svg";
+import SideBar from "component/Sidebar/SideBar";
 function App() {
   return (
     <div className="container">
-      <TopCreator/>
+      <SideBar/>
+      {/* <TopCreator/> */}
+      {/* <ButtonSideBar
+        text="Dashboard"
+        icon={icon}
+      /> */}
       {/* <FollowButton/> */}
       {/* <Widget
         text="Revenue"
