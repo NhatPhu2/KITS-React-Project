@@ -53,8 +53,8 @@ const numberFormat = (value) =>
 
 const Widget = ({ price, text, textPercent, textETH }) => {
   return (
-    <Container>
-      <div className="heheh">
+    <Container className="widget">
+      <div >
         <p>{text}</p>
         <div className="eth">
           <img src="" alt="" />

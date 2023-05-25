@@ -12,16 +12,25 @@ import iconSetting from "../../assets/image/setting.svg";
 import iconSun from "../../assets/image/sun.svg";
 import iconMoon from "../../assets/image/moon.svg";
 import iconSmallMoon from "../../assets/image/smallmoon.svg";
-import etherium from "../../assets/image/Ethereum (ETH).svg"
-import next from "../../assets/image/next.svg"
-import bigEthereum from "../../assets/image/Ethereum (ETH)B.svg"
+import etherium from "../../assets/image/Ethereum (ETH).svg";
+import next from "../../assets/image/next.svg";
+import bigEthereum from "../../assets/image/Ethereum (ETH)B.svg";
+import {React,useState} from "react"
 const SideBarStyled = styled.div`
   font-family: "DM Sans";
+  background-color: #ffff;
+  /* width: 292px; */
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   .header-icon {
     display: flex;
     align-items: center;
     gap: 10px;
     font-family: "DM Sans";
+    padding: 14px 14px 24px 10px;
   }
 
   .title h1 {
@@ -37,12 +46,11 @@ const SideBarStyled = styled.div`
     font-size: 10px;
   }
 
-  .title {
-    line-height: 23px;
-  }
+  
 
   .btn-sidebar {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
   }
   .other-content {
     display: flex;
@@ -52,22 +60,39 @@ const SideBarStyled = styled.div`
   .other-content p {
   }
 
-  .dark-mode {
+  .toggle {
     display: flex;
     align-items: center;
+    position: relative;
     justify-content: space-around;
     width: 56px;
     height: 30px;
     background-color: #f0f0f0;
     border-radius: 20px;
     padding: 4px;
+    cursor: pointer;
+    transition: .3s;
   }
 
+  .toggle .ball{
+    position: absolute;
+    left: 10%;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    transition: .3s ease-out;
+  }
+  .toggle img{
+    z-index: 1;
+  }
+
+  .toggle-with
+  /* 
   .sun {
     background-color: #ffff;
     border-radius: 20px;
     padding: 4px;
-  }
+  } */
 
   .profile h3 {
     font-weight: 700;
@@ -89,6 +114,19 @@ const SideBarStyled = styled.div`
     font-size: 16px;
     width: 58%;
   }
+  .card-balance{
+    align-self: center;
+  }
+  #toggle{
+    display: none;
+  }
+  .dark .toggle .ball{
+    background-color: #27262e;
+    transform: translateX(27px);
+  }
+  .light .toggle .ball{
+    background-color: #ffff;
+  }
 `;
 const CardStyled = styled.div`
   width: 228px;
@@ -103,75 +141,80 @@ const CardStyled = styled.div`
   gap: 15px;
   padding: 13px;
   position: relative;
-  h1{
+  justify-content: center;
+  h1 {
     font-weight: 500;
     font-size: 12px;
-    color: #E0DEE5;
-
+    color: #e0dee5;
+    margin: 0;
+    /* margin-top: 25px; */
     /* margin-top: 25px; */
   }
-  .balance-price{
+  .balance-price {
     font-weight: 700;
     font-size: 30px;
     color: #ffff;
   }
 
-  .eth{
+  .eth {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
   }
 
-  .action-balance{
+  .action-balance {
     width: 196px;
-    height: 49px;
-    padding: 14px 16px 14px 16px;
+    /* height: 49px; */
+    padding: 14px 0px 14px 0px;
     border-radius: 12px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     background-color: #ffff;
     z-index: 99;
   }
-  .action-balance p{
+  .action-balance p {
     font-weight: 700;
     font-size: 14px;
-    color: #27262E;
+    color: #27262e;
     margin: 0;
   }
-  .btn-plus{
-    background-color: #5429FF;
+  .btn-plus {
+    background-color: #5429ff;
     border-radius: 20px;
     width: 20px;
     height: 20px;
     border: none;
-    color:#ffff;
+    color: #ffff;
     text-align: center;
   }
-  .btn-next{
+  .btn-next {
     background-color: #ffff;
     border: none;
   }
-  .eth p{
+  .eth p {
     color: #ffff;
+    margin: 0;
+    /* margin: 8px 0 8px 0; */
   }
-  .eth{
+  .eth {
     line-height: 25px;
   }
-  .balance-price{
+  .balance-price {
     margin: 0;
   }
-  .big-ethereum-icon{
+  .big-ethereum-icon {
     position: absolute;
-    left: 10%;
-    bottom: 17%;
+    left: 14%;
+    bottom: 19%;
   }
+
 `;
 const CardBalance = () => {
   return (
     <CardStyled className="card-balance">
-        <img className="big-ethereum-icon" src={bigEthereum} alt="" />
+      <img className="big-ethereum-icon" src={bigEthereum} alt="" />
       <h1>Your Balance</h1>
       <p className="balance-price">1,034.02</p>
       <div className="eth">
@@ -179,10 +222,12 @@ const CardBalance = () => {
         <p>ETH</p>
       </div>
       <div className="action-balance">
-        <button className="btn-plus" ><span>+</span></button>
+        <button className="btn-plus">
+          <span>+</span>
+        </button>
         <p>Top Up Balance</p>
         <button className="btn-next">
-            <img src={next} alt="" />
+          <img src={next} alt="" />
         </button>
       </div>
     </CardStyled>
@@ -190,6 +235,11 @@ const CardBalance = () => {
 };
 
 const SideBar = () => {
+  const [toggle,setToggle] = useState("light");
+
+  const onToggleChange = (event) =>{
+    event.target.checked ? setToggle("dark") : setToggle("light") 
+  }
   return (
     <SideBarStyled>
       <div className="header-icon">
@@ -220,13 +270,15 @@ const SideBar = () => {
       </div>
       <div className="other">
         <h3>Other</h3>
-        <div className="other-content">
+        <div className={`other-content ` + toggle}>
           <img src={iconMoon} alt="" />
           <p>light mode</p>
-          <div className="dark-mode">
-            <img className="sun" src={iconSun} alt="" />
-            <img src={iconSmallMoon} alt="" />
-          </div>
+          <input type="checkbox" id="toggle" onChange={onToggleChange} />
+          <label for="toggle" className="toggle">
+              <img className="sun" src={iconSun} alt="" />
+              <img src={iconSmallMoon} alt="" />
+              <span className="ball"></span>
+          </label>
         </div>
       </div>
 
