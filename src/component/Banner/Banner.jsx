@@ -1,14 +1,20 @@
 import Widget from "component/Widget/index";
 import { styled } from "styled-components";
 import imgBanner from "../../assets/image/banner.svg";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 const BannerStyled = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 50px 20px 20px 20px;
+  gap: 10px;
   .banner {
     position: relative;
-    width: 65%;
+  }
+  .carousel{
+    width: 716px;
+    height: 354px;
   }
   .right-widget {
     display: flex;
@@ -69,16 +75,38 @@ const BannerStyled = styled.div`
 const Banner = () => {
   return (
     <BannerStyled>
-      <div className="banner">
-        <img src={imgBanner} alt="" />
-        <div className="txt-banner">
-          <h1>Discover, Create and Sell Your Own NFT.</h1>
-          <div className="btn">
-            <button className="btn-discover">Discover</button>
-            <button className="btn-create">Create</button>
+      <Carousel className="carousel" showArrows={false} showThumbs={false} showStatus={false}>
+        <div className="banner">
+          <img src={imgBanner} alt="" />
+          <div className="txt-banner">
+            <h1>Discover, Create and Sell Your Own NFT.</h1>
+            <div className="btn">
+              <button className="btn-discover">Discover</button>
+              <button className="btn-create">Create</button>
+            </div>
           </div>
         </div>
-      </div>
+        <div className="banner">
+          <img src={imgBanner} alt="" />
+          <div className="txt-banner">
+            <h1>Discover, Create and Sell Your Own NFT.</h1>
+            <div className="btn">
+              <button className="btn-discover">Discover</button>
+              <button className="btn-create">Create</button>
+            </div>
+          </div>
+        </div>
+        <div className="banner">
+          <img src={imgBanner} alt="" />
+          <div className="txt-banner">
+            <h1>Discover, Create and Sell Your Own NFT.</h1>
+            <div className="btn">
+              <button className="btn-discover">Discover</button>
+              <button className="btn-create">Create</button>
+            </div>
+          </div>
+        </div>
+      </Carousel>
       <div className="right-widget">
         <Widget text="Revenue" price={5} textPercent={12.3} textETH="ETH" />
         <Widget text="Spending" price={2} textPercent={8.1} textETH="ETH" />
