@@ -1,4 +1,4 @@
-import Widget from "component/Widget/index";
+import Widget from "../Widget/index";
 import { styled } from "styled-components";
 import imgBanner from "../../assets/image/banner.svg";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader

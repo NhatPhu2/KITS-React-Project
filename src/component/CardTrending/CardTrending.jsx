@@ -1,6 +1,6 @@
 import { CardNFT } from "./index";
 import { styled } from "styled-components";
-import TopCreator from "component/TopCreator/index";
+import TopCreator from "../TopCreator/index";
 import pinkApe from "../../assets/image/pinkMonkey.svg";
 import greenApe from "../../assets/image/greenMonkey.svg";
 import blueApe from "../../assets/image/blueMonkey.svg";
