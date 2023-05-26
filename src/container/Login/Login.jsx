@@ -4,14 +4,14 @@ import {
   LogoGithub,
   LoginBackground,
   LogoSideBar,
-  IconEye
+  IconEye,
 } from "../../component/Logo/index";
 import { styled } from "styled-components";
-
+import { React, useState } from "react";
 const ContainerStyled = styled.div`
   width: 1920px;
   height: 1080px;
-  background-image: linear-gradient(to right, #FFFFFF 0%, #BBAAFF 100%);
+  background-image: linear-gradient(to right, #ffffff 0%, #bbaaff 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,8 +24,8 @@ const ContainerStyled = styled.div`
     display: flex;
     /* justify-content: center; */
     align-items: center;
-   /* justify-content: space-around; */
-   gap: 50px;
+    /* justify-content: space-around; */
+    gap: 50px;
   }
 
   /* .right-block {
@@ -46,18 +46,18 @@ const ContainerStyled = styled.div`
     align-items: center;
     gap: 10px;
     padding-left: 30px;
-    h1{
-        margin: 0;
-        font-family: "DM Sans";
-        font-weight: 700;
-        font-size: 28px;
+    h1 {
+      margin: 0;
+      font-family: "DM Sans";
+      font-weight: 700;
+      font-size: 28px;
     }
-    p{
-        margin: 0;
-        font-weight: 700;
-        font-size: 10px;
-        font-family: "DM Sans";
-        color: #7A797D;
+    p {
+      margin: 0;
+      font-weight: 700;
+      font-size: 10px;
+      font-family: "DM Sans";
+      color: #7a797d;
     }
   }
 
@@ -89,7 +89,6 @@ const ContainerStyled = styled.div`
     background-color: rgba(187, 170, 255, 0.5);
     margin-bottom: 10px;
     border: none;
-    outline: none;
   }
   .label-group {
     display: flex;
@@ -107,7 +106,7 @@ const ContainerStyled = styled.div`
   .input-password button {
     outline: none;
     border: none;
-    background-color: #c0dbea;
+    background-color: rgba(187, 170, 255, 0);
     position: absolute;
     width: 32.42px;
     height: 27.22px; /* left: 50%; */
@@ -129,7 +128,7 @@ const ContainerStyled = styled.div`
     border-radius: 23px;
     width: 150px;
     height: 46px;
-    background-color: #5429FF;
+    background-color: #5429ff;
     color: white;
     font-weight: 700;
     font-size: 16px;
@@ -204,25 +203,26 @@ const ContainerStyled = styled.div`
     font-weight: 400;
     color: #d885a3;
   }
-  .input-password button{
-    background-color: rgba(187, 170, 255, 0);
-    border: none;
-    outline: none;
-  }
 `;
 
 const Login = () => {
+  const [toggleShowPassword, setToggleShowPassword] = useState("password");
+  const onClickShowAndHidePassword = () => {
+    toggleShowPassword == "password"
+      ? setToggleShowPassword("text")
+      : setToggleShowPassword("password");
+  };
   return (
     <ContainerStyled>
       <div className="wrapper">
         <div className="login">
           <div className="login-flex">
             <div className="logo">
-                <LogoSideBar/>
-                <div className="title">
-                    <h1>MyNFT</h1>
-                    <p>NFT Marketplace</p>
-                </div>
+              <LogoSideBar />
+              <div className="title">
+                <h1>MyNFT</h1>
+                <p>NFT Marketplace</p>
+              </div>
             </div>
             <h1 className="text-login">Log In</h1>
             <form id="login_form" action="">
@@ -238,9 +238,13 @@ const Login = () => {
                   </label>
                 </div>
                 <span className="input-password">
-                  <input type="password" id="ip-password" name="password" />
-                  <button onclick="showAndHidePassword()" type="button">
-                   <IconEye/>
+                  <input
+                    type={toggleShowPassword}
+                    id="ip-password"
+                    name="password"
+                  />
+                  <button onClick={onClickShowAndHidePassword} type="button">
+                    <IconEye />
                   </button>
                 </span>
               </div>
@@ -277,7 +281,7 @@ const Login = () => {
           /> */}
           {/* <img className="img" src="../assets/cactus.svg" alt="" /> */}
         </div>
-        <LoginBackground/>
+        <LoginBackground />
       </div>
     </ContainerStyled>
   );
