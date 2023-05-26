@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Search from "component/Search/index";
 import bell from "../../assets/image/bell.svg";
 import avatar from "../../assets/image/avatar.svg";
-
+import { Link } from "react-router-dom";
 const HeaderStyled = styled.div`
   position: fixed;
   z-index: 99;
@@ -13,7 +13,7 @@ const HeaderStyled = styled.div`
   align-items: center;
   box-sizing: border-box;
   padding: 16px 45px 20px 19px;
-  background-color: #CAEAE6;
+  background-color: #caeae6;
   .bell {
     display: inline-block;
     background-color: #ffff;
@@ -26,10 +26,30 @@ const HeaderStyled = styled.div`
   .bell img {
     vertical-align: middle;
   }
-  .right-header{
+  .right-header {
     display: flex;
     align-items: center;
     gap: 20px;
+  }
+  .avartar{
+    position: relative;
+    ul{
+      position: absolute;
+      right: 0;
+      margin: 0;
+      /* background-color: gray; */
+      display: none;
+    }
+    ul li{
+      list-style: none;
+    }
+    ul li a{
+      text-decoration: none;
+      color: black;
+    }
+  }
+  .avartar:hover ul{
+    display: block;
   }
 `;
 const Header = () => {
@@ -40,8 +60,14 @@ const Header = () => {
         <span className="bell">
           <img src={bell} alt="" />
         </span>
-
-        <img src={avatar} alt="" />
+        <span className="avartar">
+          <img src={avatar} alt="" />
+          <ul>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </ul>
+        </span>
       </div>
     </HeaderStyled>
   );
