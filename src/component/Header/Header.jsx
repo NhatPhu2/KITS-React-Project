@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Search from "component/Search/index";
 import bell from "../../assets/image/bell.svg";
 import avatar from "../../assets/image/avatar.svg";
+
 const HeaderStyled = styled.div`
   position: fixed;
   z-index: 99;
