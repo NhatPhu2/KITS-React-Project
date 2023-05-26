@@ -12,7 +12,7 @@ const Style = styled.div`
   height: 478px;
   border-radius: 16px;
   font-family: "DM Sans";
-  padding: 30px;
+  padding: 20px;
   .main-title {
     display: inline;
   }

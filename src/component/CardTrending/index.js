@@ -1,3 +1,3 @@
 import CardNFT from "./CardNFT";
-import CardContent from "./CardContent";
+import CardContent from "./CardTrending";
 export {CardNFT,CardContent}

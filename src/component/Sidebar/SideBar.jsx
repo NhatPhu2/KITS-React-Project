@@ -9,13 +9,13 @@ import iconWallet from "../../assets/image/wallet-3.svg";
 import iconLovely from "../../assets/image/lovely.svg";
 import iconClock from "../../assets/image/clock.svg";
 import iconSetting from "../../assets/image/setting.svg";
-import iconSun from "../../assets/image/sun.svg";
-import iconMoon from "../../assets/image/moon.svg";
-import iconSmallMoon from "../../assets/image/smallmoon.svg";
+import { ReactComponent as IconSun } from "../../assets/image/sun.svg";
+import { ReactComponent as IconMoon } from "../../assets/image/moon.svg";
+import { ReactComponent as IconSmallMoon } from "../../assets/image/smallmoon.svg";
 import etherium from "../../assets/image/Ethereum (ETH).svg";
 import next from "../../assets/image/next.svg";
 import bigEthereum from "../../assets/image/Ethereum (ETH)B.svg";
-import {React,useState} from "react"
+import { React, useState } from "react";
 const SideBarStyled = styled.div`
   font-family: "DM Sans";
   background-color: #ffff;
@@ -46,8 +46,6 @@ const SideBarStyled = styled.div`
     font-size: 10px;
   }
 
-  
-
   .btn-sidebar {
     margin-bottom: 20px;
     margin-top: 20px;
@@ -71,18 +69,18 @@ const SideBarStyled = styled.div`
     border-radius: 20px;
     padding: 4px;
     cursor: pointer;
-    transition: .3s;
+    transition: 0.3s;
   }
 
-  .toggle .ball{
+  .toggle .ball {
     position: absolute;
     left: 10%;
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    transition: .3s ease-out;
+    transition: 0.3s ease-out;
   }
-  .toggle img{
+  .toggle img {
     z-index: 1;
   }
 
@@ -114,18 +112,21 @@ const SideBarStyled = styled.div`
     font-size: 16px;
     width: 58%;
   }
-  .card-balance{
+  .card-balance {
     align-self: center;
   }
-  #toggle{
+  #toggle {
     display: none;
   }
-  .dark .toggle .ball{
+  .dark .toggle .ball {
     background-color: #27262e;
     transform: translateX(27px);
   }
-  .light .toggle .ball{
+  .light .toggle .ball {
     background-color: #ffff;
+  }
+  .toggle .icon {
+    z-index: 1;
   }
 `;
 const CardStyled = styled.div`
@@ -209,7 +210,6 @@ const CardStyled = styled.div`
     left: 14%;
     bottom: 19%;
   }
-
 `;
 const CardBalance = () => {
   return (
@@ -235,11 +235,11 @@ const CardBalance = () => {
 };
 
 const SideBar = () => {
-  const [toggle,setToggle] = useState("light");
+  const [toggle, setToggle] = useState("light");
 
-  const onToggleChange = (event) =>{
-    event.target.checked ? setToggle("dark") : setToggle("light") 
-  }
+  const onToggleChange = (event) => {
+    event.target.checked ? setToggle("dark") : setToggle("light");
+  };
   return (
     <SideBarStyled>
       <div className="header-icon">
@@ -271,13 +271,17 @@ const SideBar = () => {
       <div className="other">
         <h3>Other</h3>
         <div className={`other-content ` + toggle}>
-          <img src={iconMoon} alt="" />
+          <IconMoon />
           <p>light mode</p>
           <input type="checkbox" id="toggle" onChange={onToggleChange} />
           <label for="toggle" className="toggle">
-              <img className="sun" src={iconSun} alt="" />
-              <img src={iconSmallMoon} alt="" />
-              <span className="ball"></span>
+            <IconSun fill="orange" className="icon" />
+            {toggle != "dark" ? (
+              <IconSmallMoon className="icon " />
+            ) : (
+              <IconSmallMoon fill="yellow" className="icon " />
+            )}
+            <span className="ball"></span>
           </label>
         </div>
       </div>

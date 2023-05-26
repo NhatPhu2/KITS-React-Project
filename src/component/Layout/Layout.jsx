@@ -2,9 +2,9 @@ import Header from "component/Header/index";
 import styled from "styled-components";
 import SideBar from "component/Sidebar/SideBar";
 const LayoutStyled = styled.div`
-  min-height: 200vh;
-  /* width: 1440px; */
-  /* height: 1024px; */
+  /* min-height: 200vh; */
+  width: 1440px;
+  height: 1024px;
   background-color: #CAEAE6;
   .right {
     float: right;
@@ -16,6 +16,7 @@ const LayoutStyled = styled.div`
 const ContentStyled = styled.div`
   margin-top: 64px;
   /* height: 200vh; */
+  height: 1024px;
 `;
 const SideBarStyled = styled.div`
   float: left;
